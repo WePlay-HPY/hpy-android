@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".OpenStreetMap"></activity>
+        <activity android:name=".AndroidOpenStreetMapViewActivity"></activity>
     </application>
 
 </manifest>

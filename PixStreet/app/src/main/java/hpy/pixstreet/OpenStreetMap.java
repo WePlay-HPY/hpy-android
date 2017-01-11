@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import org.osmdroid.api.IMapController;
+import org.osmdroid.google.wrapper.MyLocationOverlay;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.views.overlay.ItemizedIconOverlay;
+import org.osmdroid.views.overlay.ItemizedOverlay;
 import org.osmdroid.views.overlay.OverlayItem;
 import org.osmdroid.views.overlay.compass.CompassOverlay;
 import org.osmdroid.views.overlay.compass.InternalCompassOrientationProvider;
@@ -24,7 +26,7 @@ public class OpenStreetMap extends AppCompatActivity {
     private MapView map;
     private MyLocationNewOverlay mLocationOverlay;
     private CompassOverlay mCompassOverlay;
-    private ItemizedIconOverlay mMyLocationOverlay;
+    private ItemizedOverlay mMyLocationOverlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,20 +38,15 @@ public class OpenStreetMap extends AppCompatActivity {
         map.setBuiltInZoomControls(true);
         map.setMultiTouchControls(true);
         IMapController mapController = map.getController();
-        mapController.setZoom(25);
+        mapController.setZoom(16);
         GeoPoint startPoint = new GeoPoint(49.1833, -0.35);
         mapController.setCenter(startPoint);
 
-        GpsMyLocationProvider gps = new GpsMyLocationProvider(this.getApplicationContext());
-
-        mLocationOverlay = new MyLocationNewOverlay(gps, map);
+        mLocationOverlay = new MyLocationNewOverlay(new GpsMyLocationProvider(this.getApplicationContext()),map);
         mLocationOverlay.enableMyLocation();
-        mCompassOverlay = new CompassOverlay(this.getApplicationContext(), new InternalCompassOrientationProvider(this.getApplicationContext()), map);
-        mCompassOverlay.enableCompass();
-        map.getOverlays().add(this.mCompassOverlay);
-        map.getOverlays().add(this.mLocationOverlay);
+        map.getOverlays().add(mLocationOverlay);
 
-        putPoint(new GeoPoint(49.1833, -0.35));
+        putPoints(new GeoPoint(49.1833, -0.35));
     }
 
     public void onResume(){
@@ -62,7 +59,7 @@ public class OpenStreetMap extends AppCompatActivity {
     }
 
 
-    public void putPoint(GeoPoint geo){
+    public void putPoints(GeoPoint geo){
         geo = new GeoPoint(49.1833, -0.35);
         ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
         items.add(new OverlayItem("Here", "SampleDescription", geo));
