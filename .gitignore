@@ -39,4 +39,5 @@ captures/
 # Keystore files
 *.jks
 
-PixStreet/PixStreet.sln
+PixStreet-Unity/PixStreet.sln
+PixStreet/gradlew.bat
