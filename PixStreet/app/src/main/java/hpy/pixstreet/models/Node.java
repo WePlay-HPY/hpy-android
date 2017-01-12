@@ -78,7 +78,6 @@ public class Node {
         this.loc = loc;
     }
 
-
     public List<Score> getScores() {
         return scores;
     }
@@ -88,7 +87,7 @@ public class Node {
     }
 
     public Pair<String, Integer> getHighScore(){
-        int score = 0;
+        int score = -1;
         String name = "";
         for (Score sc : scores){
             if (sc.getScore() > score){

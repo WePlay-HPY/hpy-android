@@ -3,19 +3,11 @@ package hpy.pixstreet;
 import android.util.Log;
 import android.util.Pair;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import hpy.pixstreet.models.MyNode;
 import hpy.pixstreet.models.Node;
-import hpy.pixstreet.models.NodeResults;
-import hpy.pixstreet.models.Score;
-import hpy.pixstreet.ws.PixStreetClient;
 import hpy.pixstreet.ws.PixStreetRequestClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,7 +48,6 @@ public class MapDatas {
                         double latitude  = loc.get(1);
                         Pair<String, Integer> highScore = node.getHighScore();
                         _datas.add(new MapItem(longitude, latitude, highScore.first, highScore.second ));
-                        //_datas.add(new MapItem(longitude, latitude, 10));
                     }
 
                 }else{
