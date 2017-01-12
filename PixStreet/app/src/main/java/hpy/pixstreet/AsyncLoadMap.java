@@ -2,9 +2,6 @@ package hpy.pixstreet;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.widget.Toast;
-
-
 import android.support.v7.app.AppCompatActivity;
 
 public class AsyncLoadMap extends AsyncTask<Void, Void, Void> {
