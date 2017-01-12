@@ -6,12 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.io.IOException;
+
+import hpy.pixstreet.ws.PixStreetClient;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         final Button osm = (Button) findViewById(R.id.osm);
         osm.setOnClickListener(new View.OnClickListener() {
@@ -22,4 +27,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

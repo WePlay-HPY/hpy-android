@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import org.osmdroid.api.IMapController;
-import org.osmdroid.google.wrapper.MyLocationOverlay;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
@@ -15,17 +14,20 @@ import org.osmdroid.views.overlay.ItemizedIconOverlay;
 import org.osmdroid.views.overlay.ItemizedOverlay;
 import org.osmdroid.views.overlay.OverlayItem;
 import org.osmdroid.views.overlay.compass.CompassOverlay;
-import org.osmdroid.views.overlay.compass.InternalCompassOrientationProvider;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import hpy.pixstreet.ws.PixStreetClient;
 
 public class OpenStreetMap extends AppCompatActivity {
 
+    private MapDatas mapDatas = MapDatas.getInstance();
     private MapView map;
     private MyLocationNewOverlay mLocationOverlay;
-    private CompassOverlay mCompassOverlay;
     private ItemizedOverlay mMyLocationOverlay;
 
     @Override
@@ -46,7 +48,8 @@ public class OpenStreetMap extends AppCompatActivity {
         mLocationOverlay.enableMyLocation();
         map.getOverlays().add(mLocationOverlay);
 
-        putPoints(new GeoPoint(49.1833, -0.35));
+        putPoints();
+
     }
 
     public void onResume(){
@@ -59,10 +62,15 @@ public class OpenStreetMap extends AppCompatActivity {
     }
 
 
-    public void putPoints(GeoPoint geo){
-        geo = new GeoPoint(49.1833, -0.35);
+    public void putPoints(){
         ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
-        items.add(new OverlayItem("Here", "SampleDescription", geo));
+        for (Iterator<MapItem> i = mapDatas.getDatasMap().iterator(); i.hasNext(); ) {
+            double longitude = i.next().getLongitude();
+            double latitude  = i.next().getLatitude();
+            GeoPoint geo = new GeoPoint(latitude, longitude);
+            items.add(new OverlayItem("Here", "SampleDescription", geo));
+        }
+
 
         mMyLocationOverlay = new ItemizedIconOverlay<OverlayItem>(items,
                 new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
@@ -71,7 +79,7 @@ public class OpenStreetMap extends AppCompatActivity {
                                                      final OverlayItem item) {
                         Toast.makeText(
                                 OpenStreetMap.this,
-                                "Launch Game", Toast.LENGTH_LONG).show();
+                                item.getTitle(), Toast.LENGTH_LONG).show();
                         return true;
                     }
                     @Override
