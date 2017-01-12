@@ -1,5 +1,8 @@
 package hpy.pixstreet.models;
 
+import android.util.Pair;
+
+import java.util.Collections;
 import java.util.List;
 
 public class Node {
@@ -75,7 +78,6 @@ public class Node {
         this.loc = loc;
     }
 
-
     public List<Score> getScores() {
         return scores;
     }
@@ -84,4 +86,15 @@ public class Node {
         this.scores = scores;
     }
 
+    public Pair<String, Integer> getHighScore(){
+        int score = -1;
+        String name = "";
+        for (Score sc : scores){
+            if (sc.getScore() > score){
+                score = sc.getScore();
+                name = sc.getName();
+            }
+        }
+        return new Pair<>(name, score);
+    }
 }

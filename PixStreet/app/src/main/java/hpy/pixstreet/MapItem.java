@@ -7,7 +7,10 @@ package hpy.pixstreet;
 public class MapItem {
     private double longitude;
     private double latitude;
-    private int score;
+    private Integer score;
+
+
+    private String name;
 
     public double getLongitude() {
         return longitude;
@@ -17,8 +20,12 @@ public class MapItem {
         return latitude;
     }
 
-    public int getScore() {
+    public Integer getScore() {
         return score;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public MapItem() {
@@ -31,11 +38,24 @@ public class MapItem {
         this.longitude = longitude;
         this.latitude = latitude;
         this.score = 0;
+        this.name  = "";
     }
 
-    public MapItem(double longitude, double latitude, int score) {
+
+    public MapItem(double longitude, double latitude, String name, Integer score) {
         this.longitude = longitude;
         this.latitude = latitude;
         this.score = score;
+        this.name  = name;
+    }
+
+    public String getHighScore() {
+        String user = "";
+        if (name.equals("")) {
+            user = "nobody";
+        } else {
+            user = name;
+        }
+        return score.toString() + " (" + user + ")";
     }
 }

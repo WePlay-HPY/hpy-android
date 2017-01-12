@@ -1,15 +1,13 @@
 package hpy.pixstreet;
 
 import android.util.Log;
+import android.util.Pair;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import hpy.pixstreet.models.Node;
-import hpy.pixstreet.models.NodeResults;
-import hpy.pixstreet.ws.PixStreetClient;
 import hpy.pixstreet.ws.PixStreetRequestClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,8 +46,8 @@ public class MapDatas {
                         List<Double> loc = node.getLoc();
                         double longitude = loc.get(0);
                         double latitude  = loc.get(1);
-                        _datas.add(new MapItem(longitude, latitude));
-
+                        Pair<String, Integer> highScore = node.getHighScore();
+                        _datas.add(new MapItem(longitude, latitude, highScore.first, highScore.second ));
                     }
 
                 }else{
@@ -58,23 +56,6 @@ public class MapDatas {
             }
         });
     }
-
-    /*
-    private MapDatas(List<Node> nodes){
-
-        // à supprimer
-        nodes.add(new Node( -0.35,49.183));
-        nodes.add(new Node( -0.349,49.182));
-        nodes.add(new Node( -0.364,49.185));
-        nodes.add(new Node( -0.352,49.179));
-        // supp
-
-        for(Iterator<Node> i = nodes.iterator(); i.hasNext(); ) {
-            Node node = i.next();
-            _datas.add(new MapItem(node.getLongitude(), node.getLatitude()));
-        }
-    }
-    */
 
     public List<MapItem> getDatasMap(){return _datas;}
 }

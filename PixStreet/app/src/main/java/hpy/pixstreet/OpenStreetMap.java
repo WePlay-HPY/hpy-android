@@ -3,6 +3,7 @@ package hpy.pixstreet;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Pair;
 import android.widget.Toast;
 
 import org.osmdroid.api.IMapController;
@@ -68,7 +69,7 @@ public class OpenStreetMap extends AppCompatActivity {
             double longitude = i.next().getLongitude();
             double latitude  = i.next().getLatitude();
             GeoPoint geo = new GeoPoint(latitude, longitude);
-            items.add(new OverlayItem("Here", "SampleDescription", geo));
+            items.add(new OverlayItem(i.next().getHighScore(), "Play on this point", geo));
         }
 
 
@@ -79,7 +80,7 @@ public class OpenStreetMap extends AppCompatActivity {
                                                      final OverlayItem item) {
                         Toast.makeText(
                                 OpenStreetMap.this,
-                                item.getTitle(), Toast.LENGTH_LONG).show();
+                                "Score : " + item.getTitle(), Toast.LENGTH_LONG).show();
                         return true;
                     }
                     @Override
@@ -87,7 +88,7 @@ public class OpenStreetMap extends AppCompatActivity {
                                                    final OverlayItem item) {
                         Toast.makeText(
                                 OpenStreetMap.this,
-                                "Long", Toast.LENGTH_LONG).show();
+                                item.getSnippet(), Toast.LENGTH_LONG).show();
                         return false;
                     }
                 }, this.getApplicationContext());
