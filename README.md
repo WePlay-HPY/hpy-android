@@ -46,6 +46,6 @@ Ce projet est déployé sous licence CBY - regardez [LICENSE.md](LICENSE.md) pou
 
 * Nous remercions l'ensemble des participants au projet.
 * Nous remercions les enseignants ENSICAEN pour leur soutient par rapport à différentes questions techniques.
-* Nous remercions le dômes de Caen pour son accueil, ses conseils et la mise à disposition du matériel.
+* Nous remercions le Dôme de Caen pour son accueil, ses conseils et la mise à disposition du matériel.
 * Nous remercions OpenStreetMap et sa communauté pour la mise à disposition de données de cartographie.
 
