@@ -50,7 +50,7 @@ public class MapItem {
     }
 
     public String getHighScore() {
-        String user = "";
+        String user;
         if (name.equals("")) {
             user = "nobody";
         } else {
