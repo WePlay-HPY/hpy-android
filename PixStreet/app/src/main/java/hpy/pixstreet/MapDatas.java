@@ -54,7 +54,8 @@ public class MapDatas {
                         List<Double> loc = node.getLoc();
                         double longitude = loc.get(0);
                         double latitude  = loc.get(1);
-                        _datas.add(new MapItem(longitude, latitude, node.getHighScore()));
+                        Pair<String, Integer> highScore = node.getHighScore();
+                        _datas.add(new MapItem(longitude, latitude, highScore.first, highScore.second ));
                         //_datas.add(new MapItem(longitude, latitude, 10));
                     }
 

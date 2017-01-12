@@ -5,18 +5,12 @@ package hpy.pixstreet;
  */
 
 public class MapItem {
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    private Long id;
     private double longitude;
     private double latitude;
     private Integer score;
+
+
+    private String name;
 
     public double getLongitude() {
         return longitude;
@@ -30,6 +24,10 @@ public class MapItem {
         return score;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public MapItem() {
         this.longitude = 0;
         this.latitude = 0;
@@ -40,17 +38,24 @@ public class MapItem {
         this.longitude = longitude;
         this.latitude = latitude;
         this.score = 0;
+        this.name  = "";
     }
 
-    public MapItem(Long id, double longitude, double latitude) {
-        this.id = id;
-        this.longitude = longitude;
-        this.latitude = latitude;
-    }
 
-    public MapItem(double longitude, double latitude, Integer score) {
+    public MapItem(double longitude, double latitude, String name, Integer score) {
         this.longitude = longitude;
         this.latitude = latitude;
         this.score = score;
+        this.name  = name;
+    }
+
+    public String getHighScore() {
+        String user = "";
+        if (name.equals("")) {
+            user = "nobody";
+        } else {
+            user = name;
+        }
+        return score.toString() + " (" + user + ")";
     }
 }
