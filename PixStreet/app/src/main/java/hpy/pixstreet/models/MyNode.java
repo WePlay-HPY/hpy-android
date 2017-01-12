@@ -32,7 +32,7 @@ public class MyNode{
         return id;
     }
 
-    public int getScore() {
-        return Collections.max(scores).getScore();
+    public String getScore() {
+        return Collections.max(scores).getScore().toString();
     }
 }

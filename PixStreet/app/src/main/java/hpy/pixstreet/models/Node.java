@@ -1,5 +1,6 @@
 package hpy.pixstreet.models;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Node {
@@ -82,6 +83,10 @@ public class Node {
 
     public void setScores(List<Score> scores) {
         this.scores = scores;
+    }
+
+    public String getHighScore(){
+        return Collections.max(scores).getScore().toString();
     }
 
 }

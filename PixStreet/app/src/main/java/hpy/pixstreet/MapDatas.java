@@ -55,7 +55,7 @@ public class MapDatas {
                         List<Double> loc = node.getLoc();
                         double longitude = loc.get(0);
                         double latitude  = loc.get(1);
-                        _datas.add(new MapItem(longitude, latitude));
+                        _datas.add(new MapItem(longitude, latitude, node.getHighScore()));
                     }
 
                 }else{
@@ -64,26 +64,6 @@ public class MapDatas {
             }
         });
     }
-
-
-
-    // à supprimer
-    private MapDatas(int k){
-        List<MyNode> nodes = null;
-        nodes.add(new MyNode( -0.35,49.183));
-        nodes.add(new MyNode( -0.349,49.182));
-        nodes.add(new MyNode( -0.364,49.185));
-        nodes.add(new MyNode( -0.352,49.179));
-
-        for(Iterator<MyNode> i = nodes.iterator(); i.hasNext(); ) {
-            MyNode node = i.next();
-            double longitude = node.getLongitude();
-            double latitude = node.getLatitude();
-            _datas.add(new MapItem(node.getId(),longitude, latitude));
-            scoreTable.put(node.getId().toString(),node.getScore());
-        }
-    }
-    // suppr
 
     public List<MapItem> getDatasMap(){return _datas;}
 
