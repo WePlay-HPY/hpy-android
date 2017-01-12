@@ -17,8 +17,11 @@ import org.osmdroid.views.overlay.compass.CompassOverlay;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import hpy.pixstreet.ws.PixStreetClient;
 
 public class OpenStreetMap extends AppCompatActivity {
 
