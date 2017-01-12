@@ -25,7 +25,6 @@ public class OpenStreetMap extends AppCompatActivity {
     private MapDatas mapDatas = MapDatas.getInstance();
     private MapView map;
     private MyLocationNewOverlay mLocationOverlay;
-    private CompassOverlay mCompassOverlay;
     private ItemizedOverlay mMyLocationOverlay;
 
     @Override
@@ -76,7 +75,7 @@ public class OpenStreetMap extends AppCompatActivity {
                                                      final OverlayItem item) {
                         Toast.makeText(
                                 OpenStreetMap.this,
-                                "Launch Game", Toast.LENGTH_LONG).show();
+                                item.getTitle(), Toast.LENGTH_LONG).show();
                         return true;
                     }
                     @Override
