@@ -19,7 +19,10 @@ import org.osmdroid.views.overlay.compass.InternalCompassOrientationProvider;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import hpy.pixstreet.ws.PixStreetClient;
 
 public class OpenStreetMap extends AppCompatActivity {
 
@@ -47,6 +50,25 @@ public class OpenStreetMap extends AppCompatActivity {
         map.getOverlays().add(mLocationOverlay);
 
         putPoints(new GeoPoint(49.1833, -0.35));
+
+
+        // Code pour intégration
+        testRESTAPI();
+
+    }
+
+    private void testRESTAPI() {
+        // Code pour intégration
+
+        PixStreetClient client = new PixStreetClient();
+        try {
+            client.getAllNodes();
+            client.getAllNodesFromCenter(-0.3446069, 49.1675276, 1000);
+            client.getNode(3655298618L);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void onResume(){
