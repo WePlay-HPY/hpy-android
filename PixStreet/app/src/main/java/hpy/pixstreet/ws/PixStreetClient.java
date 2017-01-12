@@ -9,6 +9,7 @@ import java.util.Map;
 
 import hpy.pixstreet.models.Node;
 import hpy.pixstreet.models.NodeResults;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -22,7 +23,7 @@ public class PixStreetClient {
     public PixStreetClient() {}
 
     public void getAllNodes() throws IOException {
-        Call<NodeResults> call = PixStreetLocationRequestClient.get().getNodes();
+        Call<NodeResults> call = PixStreetRequestClient.get().getNodes();
 
         call.enqueue(new Callback<NodeResults>() {
             @Override
@@ -53,7 +54,7 @@ public class PixStreetClient {
         options.put("lat", String.valueOf(lat));
         options.put("distance", String.valueOf(rangeInMeters));
 
-        Call<NodeResults> call = PixStreetLocationRequestClient.get().getNodesByCenter(options);
+        Call<NodeResults> call = PixStreetRequestClient.get().getNodesByCenter(options);
         call.enqueue(new Callback<NodeResults>() {
             @Override
             public void onFailure(Call<NodeResults> call, Throwable t) {
@@ -78,7 +79,7 @@ public class PixStreetClient {
 
     public void getNode(Long id) throws IOException {
 
-        Call<NodeResults> call = PixStreetLocationRequestClient.get().getNodeById(id);
+        Call<NodeResults> call = PixStreetRequestClient.get().getNodeById(id);
 
         call.enqueue(new Callback<NodeResults>() {
             @Override
@@ -88,21 +89,45 @@ public class PixStreetClient {
 
             @Override
             public void onResponse(Call<NodeResults> call, Response<NodeResults> response) {
-                Log.d("PixStreet", "Successfully response fetched" );
+                Log.d("PixStreet", "Successfully response fetched");
 
 
+                List<Node> nodes = response.body().nodes;
 
-                List<Node> nodes=response.body().nodes;
-
-                if(nodes != null) {
+                if (nodes != null) {
                     Log.d("PixStreet", "ITEM FETCHED o//");
                     // Item is nodes[0
-                }else{
+                } else {
                     Log.d("PixStreet", "No item found");
                 }
             }
         });
     }
+
+    public void postScore(int score, String name, Long node_id) {
+        Call<ResponseBody> call = PixStreetRequestClient.get().postScore(
+                score,
+                name,
+                node_id);
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    Log.d("PixStreet", "Response : " + response.body().string());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.d("PixStreet", "Error Occured: " + t.getMessage());
+            }
+        });
+
+    }
+
 
 
 }
