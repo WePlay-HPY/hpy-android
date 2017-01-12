@@ -1,12 +1,13 @@
 *[Projet PIX Street - Android](# Projet PIX Street - Android)*
 # Sommaire
-  1. [Installation](Installation)
-    1. [Prérequis](Prérequis)
-    2. [Installation](Installation)
-  2. [Déploiement](Déploiement)
-  3. [Auteurs](Auteurs)
-  4. [License](License)
-  5. [Remerciements](Remerciements)
+  1. [Installation](#Installation)
+    1. [Prérequis](#Prérequis)
+    2. [Installation](#Installation)
+  2. [Déploiement](#Déploiement)
+  3. [Auteurs](#Auteurs)
+  4. [License](#License)
+  5. [Remerciements](#Remerciements)
+
 
 # Projet PIX Street - Android
 
