@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    tools:context="hpy.pixstreet.PseudoActivity"
+    android:background="@mipmap/fond">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Entrez votre pseudo"
+        android:layout_marginRight="41dp"
+        android:layout_marginTop="111dp"
+        android:id="@+id/txt_op1"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_marginTop="20dp"
+        android:id="@+id/editTextPseudo"
+        android:layout_below="@+id/txt_op1"
+        android:layout_centerHorizontal="true"
+        android:hint="Pseudo" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valider"
+        android:onClick="validatePseudo"
+        android:layout_marginRight="41dp"
+        android:id="@+id/buttonValidate"
+        android:layout_marginTop="21dp"
+        android:layout_below="@+id/editTextPseudo"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
