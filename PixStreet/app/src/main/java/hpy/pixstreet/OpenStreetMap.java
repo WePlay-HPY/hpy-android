@@ -1,28 +1,28 @@
 package hpy.pixstreet;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Pair;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import org.osmdroid.api.IMapController;
+import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
-import org.osmdroid.config.Configuration;
 import org.osmdroid.views.overlay.ItemizedIconOverlay;
 import org.osmdroid.views.overlay.ItemizedOverlay;
 import org.osmdroid.views.overlay.OverlayItem;
-import org.osmdroid.views.overlay.compass.CompassOverlay;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import hpy.pixstreet.ws.PixStreetClient;
+import hpy.pixstreet.camera.CameraActivity;
 
 public class OpenStreetMap extends AppCompatActivity {
 
@@ -38,7 +38,7 @@ public class OpenStreetMap extends AppCompatActivity {
 
         map = (MapView) findViewById(R.id.mapview);
         map.setTileSource(TileSourceFactory.MAPNIK);
-        map.setBuiltInZoomControls(true);
+        //map.setBuiltInZoomControls(true);
         map.setMultiTouchControls(true);
         IMapController mapController = map.getController();
         mapController.setZoom(16);
@@ -48,6 +48,15 @@ public class OpenStreetMap extends AppCompatActivity {
         mLocationOverlay = new MyLocationNewOverlay(new GpsMyLocationProvider(this.getApplicationContext()),map);
         mLocationOverlay.enableMyLocation();
         map.getOverlays().add(mLocationOverlay);
+
+        final Button play = (Button) findViewById(R.id.play);
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OpenStreetMap.this, CameraActivity.class);
+                startActivity(intent);
+            }
+        });
 
         putPoints();
 
