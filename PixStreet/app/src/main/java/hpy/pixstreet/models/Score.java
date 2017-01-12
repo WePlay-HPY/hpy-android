@@ -4,7 +4,7 @@ package hpy.pixstreet.models;
  * Created by benjamindebotte on 11/01/2017.
  */
 
-public class Score {
+public class Score implements Comparable<Score> {
     private String name;
     private Integer score;
     private String node; //MongoDB Node _id
@@ -41,5 +41,10 @@ public class Score {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public int compareTo(Score another) {
+        return Integer.compare(this.score, another.score);
     }
 }

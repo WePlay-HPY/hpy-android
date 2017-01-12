@@ -3,6 +3,7 @@ package hpy.pixstreet;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Pair;
 import android.widget.Toast;
 
 import org.osmdroid.api.IMapController;
@@ -79,7 +80,7 @@ public class OpenStreetMap extends AppCompatActivity {
                                                      final OverlayItem item) {
                         Toast.makeText(
                                 OpenStreetMap.this,
-                                item.getTitle(), Toast.LENGTH_LONG).show();
+                                mapDatas.getScoreTable().get(new Pair<>(item.get)), Toast.LENGTH_LONG).show();
                         return true;
                     }
                     @Override
