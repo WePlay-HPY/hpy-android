@@ -57,7 +57,7 @@ Vous pouvez voir la liste des [contributeurs](https://github.com/your/project/co
 
 ## License
 
-Ce projet est déployé sous licence ??? - regardez [LICENSE.md](LICENSE.md) pour plus de détails.
+Ce projet est déployé sous licence CBY - regardez [LICENSE.md](LICENSE.md) pour plus de détails.
 
 ## Remerciements
 
