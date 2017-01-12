@@ -6,7 +6,7 @@ public class Node {
 
     private String _id;
     private String type;
-    private Integer id;
+    private Long id;
     private List<Tag> tags;
     private List<Double> loc = null;
     private List<Score> scores = null;
@@ -27,7 +27,7 @@ public class Node {
      * @param loc
      * @param type
      */
-    public Node(String _id, String type, Integer id, List<Tag> tags, List<Double> loc, List<Score> scores) {
+    public Node(String _id, String type, Long id, List<Tag> tags, List<Double> loc, List<Score> scores) {
         super();
         this._id = _id;
         this.type = type;
@@ -53,11 +53,11 @@ public class Node {
         this.type = type;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

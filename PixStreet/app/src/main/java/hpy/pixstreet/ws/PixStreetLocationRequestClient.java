@@ -12,15 +12,15 @@ import java.util.List;
 /**
  * Created by Joan on 16/11/2015.
  */
-public class RequestClient {
+public class PixStreetLocationRequestClient {
     private static PixStreetService REST_CLIENT;
-    private static final String API_URL = "https://pixstreet-backend.herokuapp.com/api/"; //Change according to your API path.
+    private static final String API_URL = "https://pixstreet-backend.herokuapp.com/"; //Change according to your API path.
 
     static {
         setupRestClient();
     }
 
-    private RequestClient() {}
+    private PixStreetLocationRequestClient() {}
 
     public static PixStreetService get() {
         return REST_CLIENT;
@@ -36,6 +36,7 @@ public class RequestClient {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         httpClient.addInterceptor(logging);
+
 
 
         Retrofit retrofit = new Retrofit.Builder()

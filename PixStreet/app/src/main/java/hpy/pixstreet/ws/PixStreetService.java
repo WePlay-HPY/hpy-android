@@ -1,6 +1,7 @@
 package hpy.pixstreet.ws;
 
 import java.util.List;
+import java.util.Map;
 
 import hpy.pixstreet.models.Node;
 import hpy.pixstreet.models.NodeResults;
@@ -15,9 +16,12 @@ public interface PixStreetService {
     @GET("api/location/")
     Call<NodeResults> getNodes();
 
-    @GET("api/location/{lon}&{lat}&{distance}")
-    Call<NodeResults> getNodesByCenter(@Path("lon") double lon, @Path("lat") double lat, @Path("distance") int distance);
+
+    // Will need to contain lon, lat & distance
+    @GET("api/location/")
+    Call<NodeResults> getNodesByCenter(@QueryMap Map<String, String> options);
 
     @GET("api/location/{id}")
-    Call<Node> getNodesById(@Path("id") int id);
+    Call<NodeResults> getNodeById(@Path("id") Long id);
+    // Forced to use array even if one is returned.
 }
