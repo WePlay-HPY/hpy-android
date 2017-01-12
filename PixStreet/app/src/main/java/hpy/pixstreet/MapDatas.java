@@ -27,12 +27,7 @@ import retrofit2.Response;
 public class MapDatas {
     private static MapDatas ourInstance = new MapDatas();
     private List<MapItem> _datas = new ArrayList<>();
-    private HashMap<Pair<Double,Double>,Integer> scoreTable;
-    private HashMap<Pair>
-
-    public HashMap<Pair<Double, Double>, Integer> getScoreTable() {
-        return scoreTable;
-    }
+    private HashMap<String,Integer> scoreTable;
 
     public static MapDatas getInstance() {
         return ourInstance;
@@ -84,12 +79,15 @@ public class MapDatas {
             MyNode node = i.next();
             double longitude = node.getLongitude();
             double latitude = node.getLatitude();
-            _datas.add(new MapItem(longitude, latitude));
-            scoreTable.put(new Pair<>(longitude, latitude), node.getScore());
+            _datas.add(new MapItem(node.getId(),longitude, latitude));
+            scoreTable.put(node.getId().toString(),node.getScore());
         }
     }
     // suppr
 
-
     public List<MapItem> getDatasMap(){return _datas;}
+
+    public Integer getScore(String id){
+        return scoreTable.get(id);
+    }
 }

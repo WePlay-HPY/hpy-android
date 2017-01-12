@@ -5,6 +5,15 @@ package hpy.pixstreet;
  */
 
 public class MapItem {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    private Long id;
     private double longitude;
     private double latitude;
     private int score;
@@ -31,6 +40,12 @@ public class MapItem {
         this.longitude = longitude;
         this.latitude = latitude;
         this.score = 0;
+    }
+
+    public MapItem(Long id, double longitude, double latitude) {
+        this.id = id;
+        this.longitude = longitude;
+        this.latitude = latitude;
     }
 
     public MapItem(double longitude, double latitude, int score) {
