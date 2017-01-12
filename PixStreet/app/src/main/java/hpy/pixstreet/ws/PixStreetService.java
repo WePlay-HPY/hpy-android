@@ -15,7 +15,7 @@ import retrofit2.*;
 
 public interface PixStreetService {
     @GET("api/location/")
-    Call<NodeResults> getNodes();
+    Call<List<Node>> getNodes();
 
     // Will need to contain lon, lat & distance
     @GET("api/location/")
@@ -23,7 +23,7 @@ public interface PixStreetService {
 
     // Forced to use array even if one is returned.
     @GET("api/location/{id}")
-    Call<NodeResults> getNodeById(@Path("id") Long id);
+    Call<Node> getNodeById(@Path("id") Long id);
 
     // Forced to use array even if one is returned.
     @FormUrlEncoded

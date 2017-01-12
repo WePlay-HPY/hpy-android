@@ -7,21 +7,21 @@ package hpy.pixstreet.models;
 public class Score {
     private String name;
     private Integer score;
-    private Node node;
+    private String node; //MongoDB Node _id
 
 
-    public Score(String name, Integer score, Node node) {
+    public Score(String name, Integer score, String node__id) {
         super();
         this.name = name;
         this.score = score;
-        this.node = node;
+        this.node = node__id;
     }
 
-    public Node getNode() {
+    public String getNode() {
         return node;
     }
 
-    public void setNode(Node node) {
+    public void setNode(String node) {
         this.node = node;
     }
 

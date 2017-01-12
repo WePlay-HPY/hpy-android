@@ -10,7 +10,7 @@ import java.util.List;
 import hpy.pixstreet.models.Node;
 import hpy.pixstreet.models.NodeResults;
 import hpy.pixstreet.ws.PixStreetClient;
-import hpy.pixstreet.ws.PixStreetLocationRequestClient;
+import hpy.pixstreet.ws.PixStreetRequestClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,18 +28,18 @@ public class MapDatas {
 
 
     private MapDatas() {
-        Call<NodeResults> call = PixStreetLocationRequestClient.get().getNodes();
-        call.enqueue(new Callback<NodeResults>() {
+        Call<List<Node>> call = PixStreetRequestClient.get().getNodes();
+        call.enqueue(new Callback<List<Node>>() {
             @Override
-            public void onFailure(Call<NodeResults> call, Throwable t) {
+            public void onFailure(Call<List<Node>> call, Throwable t) {
                 Log.d("PixStreet", "Error Occured: " + t.getMessage());
             }
 
             @Override
-            public void onResponse(Call<NodeResults> call, Response<NodeResults> response) {
+            public void onResponse(Call<List<Node>> call, Response<List<Node>> response) {
                 Log.d("PixStreet", "Successfully response fetched" );
 
-                List<Node> nodes=response.body().nodes;
+                List<Node> nodes=response.body();
                 if(nodes.size() > 0) {
                     Log.d("PixStreet", "ITEM FETCHED o//");
 

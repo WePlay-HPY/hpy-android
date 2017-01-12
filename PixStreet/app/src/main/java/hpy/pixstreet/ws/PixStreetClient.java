@@ -23,20 +23,20 @@ public class PixStreetClient {
     public PixStreetClient() {}
 
     public void getAllNodes() throws IOException {
-        Call<NodeResults> call = PixStreetRequestClient.get().getNodes();
+        Call<List<Node>> call = PixStreetRequestClient.get().getNodes();
 
-        call.enqueue(new Callback<NodeResults>() {
+        call.enqueue(new Callback<List<Node>>() {
             @Override
-            public void onFailure(Call<NodeResults> call, Throwable t) {
+            public void onFailure(Call<List<Node>> call, Throwable t) {
                 Log.d("PixStreet", "Error Occured: " + t.getMessage());
             }
 
             @Override
-            public void onResponse(Call<NodeResults> call, Response<NodeResults> response) {
+            public void onResponse(Call<List<Node>> call, Response<List<Node>> response) {
                 Log.d("PixStreet", "Successfully response fetched" );
 
 
-                List<Node> nodes=response.body().nodes;
+                List<Node> nodes=response.body();
 
                 if(nodes.size() > 0) {
                     Log.d("PixStreet", "ITEM FETCHED o//");
@@ -78,20 +78,20 @@ public class PixStreetClient {
 
     public void getNode(Long id) throws IOException {
 
-        Call<NodeResults> call = PixStreetRequestClient.get().getNodeById(id);
+        Call<Node> call = PixStreetRequestClient.get().getNodeById(id);
 
-        call.enqueue(new Callback<NodeResults>() {
+        call.enqueue(new Callback<Node>() {
             @Override
-            public void onFailure(Call<NodeResults> call, Throwable t) {
+            public void onFailure(Call<Node> call, Throwable t) {
                 Log.d("PixStreet", "Error Occured: " + t.getMessage());
             }
 
             @Override
-            public void onResponse(Call<NodeResults> call, Response<NodeResults> response) {
+            public void onResponse(Call<Node> call, Response<Node> response) {
                 Log.d("PixStreet", "Successfully response fetched");
 
 
-                List<Node> nodes = response.body().nodes;
+                Node nodes = response.body();
 
                 if (nodes != null) {
                     Log.d("PixStreet", "ITEM FETCHED o//");
