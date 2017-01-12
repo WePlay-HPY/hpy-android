@@ -7,7 +7,7 @@ public class Node {
     private String _id;
     private String type;
     private Long id;
-    private List<Tag> tags;
+    //private List<Tag> tags;
     private List<Double> loc = null;
     private List<Score> scores = null;
 
@@ -32,7 +32,7 @@ public class Node {
         this._id = _id;
         this.type = type;
         this.id = id;
-        this.tags = tags;
+        //this.tags = tags;
         this.loc = loc;
         this.scores = scores;
     }
@@ -62,13 +62,9 @@ public class Node {
     }
 
 
-    public List<Tag> getTags() {
-        return tags;
-    }
+    //public List<Tag> getTags() { return tags; }
 
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
-    }
+    //public void setTags(List<Tag> tags) { this.tags = tags; }
 
 
     public List<Double> getLoc() {
