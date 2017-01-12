@@ -69,7 +69,7 @@ public class OpenStreetMap extends AppCompatActivity {
             double longitude = i.next().getLongitude();
             double latitude  = i.next().getLatitude();
             GeoPoint geo = new GeoPoint(latitude, longitude);
-            items.add(new OverlayItem(i.next().getScore(), "SampleDescription", geo));
+            items.add(new OverlayItem(i.next().getScore().toString(), "Play on this point", geo));
         }
 
 
@@ -88,7 +88,7 @@ public class OpenStreetMap extends AppCompatActivity {
                                                    final OverlayItem item) {
                         Toast.makeText(
                                 OpenStreetMap.this,
-                                "Long", Toast.LENGTH_LONG).show();
+                                item.getSnippet(), Toast.LENGTH_LONG).show();
                         return false;
                     }
                 }, this.getApplicationContext());

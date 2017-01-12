@@ -45,6 +45,10 @@ public class Score implements Comparable<Score> {
 
     @Override
     public int compareTo(Score another) {
-        return Integer.compare(this.score, another.score);
+        //return Integer.compare(this.score, another.score);
+        if (this.score > another.score){
+            return this.score;
+        }
+        return another.score;
     }
 }

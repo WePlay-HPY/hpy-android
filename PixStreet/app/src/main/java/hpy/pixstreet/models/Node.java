@@ -85,8 +85,13 @@ public class Node {
         this.scores = scores;
     }
 
-    public String getHighScore(){
-        return Collections.max(scores).getScore().toString();
+    public Integer getHighScore(){
+        int score = 0;
+        for (Score sc : scores){
+            if (sc.getScore() > score){
+                score = sc.getScore();
+            }
+        }
+        return score;
     }
-
 }

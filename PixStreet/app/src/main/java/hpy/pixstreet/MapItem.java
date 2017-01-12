@@ -16,7 +16,7 @@ public class MapItem {
     private Long id;
     private double longitude;
     private double latitude;
-    private String score;
+    private Integer score;
 
     public double getLongitude() {
         return longitude;
@@ -26,20 +26,20 @@ public class MapItem {
         return latitude;
     }
 
-    public String getScore() {
+    public Integer getScore() {
         return score;
     }
 
     public MapItem() {
         this.longitude = 0;
         this.latitude = 0;
-        this.score = "0";
+        this.score = 0;
     }
 
     public MapItem(double longitude, double latitude) {
         this.longitude = longitude;
         this.latitude = latitude;
-        this.score = "0";
+        this.score = 0;
     }
 
     public MapItem(Long id, double longitude, double latitude) {
@@ -48,7 +48,7 @@ public class MapItem {
         this.latitude = latitude;
     }
 
-    public MapItem(double longitude, double latitude, String score) {
+    public MapItem(double longitude, double latitude, Integer score) {
         this.longitude = longitude;
         this.latitude = latitude;
         this.score = score;
