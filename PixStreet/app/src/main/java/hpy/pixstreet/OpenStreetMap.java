@@ -49,6 +49,7 @@ public class OpenStreetMap extends AppCompatActivity {
         map.getOverlays().add(mLocationOverlay);
 
         putPoints();
+
     }
 
     public void onResume(){

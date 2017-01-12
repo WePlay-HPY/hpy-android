@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by Joan on 16/11/2015.
  */
-public class PixStreetLocationRequestClient {
+public class PixStreetRequestClient {
     private static PixStreetService REST_CLIENT;
     private static final String API_URL = "https://pixstreet-backend.herokuapp.com/"; //Change according to your API path.
 
@@ -20,7 +20,7 @@ public class PixStreetLocationRequestClient {
         setupRestClient();
     }
 
-    private PixStreetLocationRequestClient() {}
+    private PixStreetRequestClient() {}
 
     public static PixStreetService get() {
         return REST_CLIENT;
