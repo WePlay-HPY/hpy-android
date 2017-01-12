@@ -44,7 +44,6 @@ public class PixStreetClient {
                 }
             }
         });
-
     }
 
     public void getAllNodesFromCenter(double lon, double lat, int rangeInMeters) throws IOException {
