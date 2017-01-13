@@ -1,31 +1,34 @@
 package hpy.pixstreet;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import org.osmdroid.api.IMapController;
-import org.osmdroid.google.wrapper.MyLocationOverlay;
+import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
-import org.osmdroid.config.Configuration;
 import org.osmdroid.views.overlay.ItemizedIconOverlay;
 import org.osmdroid.views.overlay.ItemizedOverlay;
 import org.osmdroid.views.overlay.OverlayItem;
-import org.osmdroid.views.overlay.compass.CompassOverlay;
-import org.osmdroid.views.overlay.compass.InternalCompassOrientationProvider;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import hpy.pixstreet.camera.CameraActivity;
 
 public class OpenStreetMap extends AppCompatActivity {
 
+    private MapDatas mapDatas = MapDatas.getInstance();
     private MapView map;
     private MyLocationNewOverlay mLocationOverlay;
-    private CompassOverlay mCompassOverlay;
     private ItemizedOverlay mMyLocationOverlay;
 
     @Override
@@ -35,7 +38,7 @@ public class OpenStreetMap extends AppCompatActivity {
 
         map = (MapView) findViewById(R.id.mapview);
         map.setTileSource(TileSourceFactory.MAPNIK);
-        map.setBuiltInZoomControls(true);
+        //map.setBuiltInZoomControls(true);
         map.setMultiTouchControls(true);
         IMapController mapController = map.getController();
         mapController.setZoom(16);
@@ -46,7 +49,17 @@ public class OpenStreetMap extends AppCompatActivity {
         mLocationOverlay.enableMyLocation();
         map.getOverlays().add(mLocationOverlay);
 
-        putPoints(new GeoPoint(49.1833, -0.35));
+        final Button play = (Button) findViewById(R.id.play);
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OpenStreetMap.this, CameraActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        putPoints();
+
     }
 
     public void onResume(){
@@ -59,10 +72,15 @@ public class OpenStreetMap extends AppCompatActivity {
     }
 
 
-    public void putPoints(GeoPoint geo){
-        geo = new GeoPoint(49.1833, -0.35);
+    public void putPoints(){
         ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
-        items.add(new OverlayItem("Here", "SampleDescription", geo));
+        for (Iterator<MapItem> i = mapDatas.getDatasMap().iterator(); i.hasNext(); ) {
+            double longitude = i.next().getLongitude();
+            double latitude  = i.next().getLatitude();
+            GeoPoint geo = new GeoPoint(latitude, longitude);
+            items.add(new OverlayItem(i.next().getHighScore(), "Play on this point", geo));
+        }
+
 
         mMyLocationOverlay = new ItemizedIconOverlay<OverlayItem>(items,
                 new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
@@ -71,7 +89,7 @@ public class OpenStreetMap extends AppCompatActivity {
                                                      final OverlayItem item) {
                         Toast.makeText(
                                 OpenStreetMap.this,
-                                "Launch Game", Toast.LENGTH_LONG).show();
+                                "Score : " + item.getTitle(), Toast.LENGTH_LONG).show();
                         return true;
                     }
                     @Override
@@ -79,7 +97,7 @@ public class OpenStreetMap extends AppCompatActivity {
                                                    final OverlayItem item) {
                         Toast.makeText(
                                 OpenStreetMap.this,
-                                "Long", Toast.LENGTH_LONG).show();
+                                item.getSnippet(), Toast.LENGTH_LONG).show();
                         return false;
                     }
                 }, this.getApplicationContext());

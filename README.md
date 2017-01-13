@@ -1,66 +1,66 @@
 *[Projet PIX Street - Android](# Projet PIX Street - Android)*
 # Sommaire
-  1. [Installation](## Installation)
-    1. [Prérequis](### Prérequis)
-    1. [Installation](### Installation)
-  2. [Déploiement](## Déploiement)
-  3. [Phase de build](## Phase de build)
-  4. [Contribution](## Contribution)
-  5. [Gestion des versions](## Gestion des versions)
-  6. [Auteurs](## Auteurs)
-  7. [License](## License)
-  8. [Remerciements](## Remerciements)
+  1. [Installation](#Installation)
+    1. [Prérequis](#Prérequis)
+    2. [Installation](#installation)
+  2. [Déploiement](#Déploiement)
+  3. [Auteurs](#Auteurs)
+  4. [License](#License)
+  5. [Remerciements](#Remerciements)
+
 
 # Projet PIX Street - Android
 
-Le projet PIX Street android est un programme android JAVA développé sous Android Studio.
-Ce projet s'adresse aux versions android 5, 6 et 7 (Lollipop - Marshmallow - Nougat)
+Le projet PIX Street Android est un programme Android JAVA développé sous Android Studio.
+Ce projet s'adresse aux versions d'Android 5.0 (Lollipop) minimum.
+Ce dépôt comprend la partie développement Android (avec Android Studio).
+## Installation <a id="Installation"></a> 
 
-## Installation
+### Prérequis <a id="Prérequis"></a> 
 
-### Prérequis
+Vous devez posséder une version d'Android Studio à jour. Android Studio version 2.2 minimum.
 
-Vous devez posséder une version d'Android Studio à jour. Veillez à bien télécharger les SDK et les différents modules dans le SDK manager lors de l'installation.
+Veillez à bien télécharger les SDK et les différents modules dans le SDK manager lors de l'installation.
+Version minimal SDK : 21
 
-### Installation
+### Installation <a id="installation"></a> 
 
-Pour récupérer une copie du projet vous pouvez simplement faire un git clone dans votre terminal :
+Cloner le répertoire du projet dans le répertoire de votre choix.
+
+La dernière version stable en développement est disponible sur la branche develop.
 
 ```
 git clone https://github.com/WePlay-HPY/pixstreet-android.git
 ```
+Pour installer directement l'application depuis le fichier _.apk_, vous pouvez récuperer directement la dernière version de l'apk sur ce lien : [app-debug.apk](https://github.com/WePlay-HPY/pixstreet-android/releases)
 
-## Déploiement
+``` 
+adb install <chemin/vers/app.apk> 
+```
 
-Le déploiement s'effectue sur un smartphone possédant une version d'Android 5, 6 ou 7 (Lollipop - Marshmallow - Nougat)
+## Déploiement <a id="Déploiement"></a> 
 
-## Phase de build
+Le déploiement s'effectue sur un smartphone possédant une version d'Android 5.0 (Lollipop) minimum.
+Un fois le projet cloné, il faut l'importer depuis Android Studio :
 
-?? todo
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+_Fichier / Nouveau / Importer un projet_
 
-## Contribution
+Selectionnez le projet précédemment cloné.
 
-Vous pouvez vous réferer à [CONTRIBUTING.md](https://gist.github.com/a_completer).
-
-## Gestion des versions
-
-Nous avons utilisé [SemVer](http://semver.org/) pour la gestion de versions. Pour les versions disponibles, vous pouvez vous référer aux [tags de ce dépôt](https://github.com/your/project/tags). 
-
-## Auteurs
+## Auteurs <a id="Auteurs"></a> 
 
 * **WePlay-HPY** - *Initial work* - [WePlay-HPY](https://github.com/WePlay-HPY)
 
-Vous pouvez voir la liste des [contributeurs](https://github.com/your/project/contributors) qui ont participé sur ce projet.
+Vous pouvez voir la liste des [contributeurs](https://github.com/WePlay-HPY/pixstreet-android/contributors) qui ont participé à ce projet.
 
-## License
+## License <a id="License"></a> 
 
 Ce projet est déployé sous licence CBY - regardez [LICENSE.md](LICENSE.md) pour plus de détails.
 
-## Remerciements
+## Remerciements <a id="Remerciements"></a> 
 
 * Nous remercions l'ensemble des participants au projet.
-* Nous remercions les enseignants ENSICAEN pour leur soutient par rapport à différentes questions techniques.
+* Nous remercions les enseignants de l'ENSICAEN pour leur soutien pour différentes questions techniques.
+* Nous remercions le Dôme de Caen pour son accueil, ses conseils et la mise à disposition du matériel.
+* Nous remercions OpenStreetMap et sa communauté pour la mise à disposition de données de cartographie.
 
