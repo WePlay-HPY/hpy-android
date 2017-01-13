@@ -876,7 +876,7 @@ public class Camera2BasicFragment extends Fragment
             case R.id.picture: {
                 takePicture();
 
-                Intent intent = getActivity().getPackageManager().getLaunchIntentForPackage("hpy.com.basketball");
+                Intent intent = getActivity().getPackageManager().getLaunchIntentForPackage("hpy.basketball");
                 intent.addCategory(Intent.ACTION_DEFAULT);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
